@@ -1,3 +1,28 @@
+## ファイルを開いたらやること
+### ターミナルを3つ立ち上げる
+①TailwindCSS用
+```
+npm run watch
+```
+②Laravel用
+```
+php artisan serve
+```
+③Laravel各コマンド実行(コントローラー作成とか)
+### Gitのコマンド
+ステージング
+```
+git add -A .
+```
+コミット(コメント付き)
+```
+% git commit -m "コメント"
+```
+プッシュ
+```
+% git push origin ブランチ名
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
