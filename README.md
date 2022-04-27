@@ -33,6 +33,12 @@ git add -A .
 git switch ブランチ名
 ```
 
+フェッチ
+```
+git 
+```
+
+
 プル
 ```
 git pull
