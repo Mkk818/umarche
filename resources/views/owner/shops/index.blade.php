@@ -22,7 +22,8 @@
                 </div>
                 <div class="text-xl">{{ $shop->name }}</div>
                 <div>
-                  @if(empty($shop->filename))
+                  {{-- @if(empty($shop->filename)) --}}
+                  @if($shop->filename = " ")
                   <img src="{{ asset('images/no_image.jpg')}}">
                   @else
                   <img src="{{ asset('storage/shops/' . $shop->filename)}}">
