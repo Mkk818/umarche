@@ -792,11 +792,11 @@ select {
 .w-6 {
   width: 1.5rem;
 }
-.w-12 {
-  width: 3rem;
-}
 .w-1\/2 {
   width: 50%;
+}
+.w-12 {
+  width: 3rem;
 }
 .w-16 {
   width: 4rem;
@@ -1081,13 +1081,13 @@ select {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 .pt-8 {
   padding-top: 2rem;
