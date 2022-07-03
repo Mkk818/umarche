@@ -720,6 +720,12 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
+.ml-10 {
+  margin-left: 2.5rem;
+}
+.mr-10 {
+  margin-right: 2.5rem;
+}
 .block {
   display: block;
 }
@@ -803,6 +809,9 @@ select {
 }
 .w-1\/4 {
   width: 25%;
+}
+.w-32 {
+  width: 8rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -1115,6 +1124,9 @@ select {
 }
 .pt-6 {
   padding-top: 1.5rem;
+}
+.pr-10 {
+  padding-right: 2.5rem;
 }
 .text-left {
   text-align: left;
