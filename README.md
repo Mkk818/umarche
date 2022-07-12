@@ -1,3 +1,5 @@
+### 元のGitHub
+https://github.com/aokitashipro/laravel_umarche
 ## ファイルを開いたらやること
 ### ターミナルを3つ立ち上げる
 ①TailwindCSS用
@@ -35,7 +37,7 @@ git switch ブランチ名
 
 フェッチ
 ```
-git 
+git
 ```
 
 
