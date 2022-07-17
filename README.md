@@ -1,5 +1,16 @@
 ### 元のGitHub
 https://github.com/aokitashipro/laravel_umarche
+
+## インストール後の実施事項
+
+画像のダミーデータは
+public/imagesフォルダ内に
+**sample1.jpg ~ sample2.jpg**として
+保存しています。
+
+`php artisan storage:link`でstorageフォルダにリンク後、<br>
+storage/app/public/productsフォルダ内に保存すると表示されます。<br>
+(productsフォルダがない場合は作成)
 ## ファイルを開いたらやること
 ### ターミナルを3つ立ち上げる
 ①TailwindCSS用
@@ -40,12 +51,10 @@ git switch ブランチ名
 git
 ```
 
-
 プル
 ```
 git pull
 ```
-
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
