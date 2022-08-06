@@ -31,17 +31,15 @@ class ImageController extends Controller
         });
     }
 
+
     public function index()
     {
         $images = Image::where('owner_id', Auth::id())
             ->orderBy('updated_at', 'desc')
             ->paginate(20);
 
-        return view(
-            'owner.images.index',
-            compact('images')
-        );
-        //
+        return view('owner.images.index',
+            compact('images'));
     }
 
     /**
@@ -76,17 +74,10 @@ class ImageController extends Controller
         return redirect()
             ->route('owner.images.index')
             ->with([
-                'message' => '画像登録が完了しました。',
-                'status' => 'info'
-            ]);
+                'message' => '画像登録が完了しました。', 'status' => 'info']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $image = Image::findOrFail($id);
@@ -98,17 +89,17 @@ class ImageController extends Controller
         $request->validate([
             'title' => 'string|max:50'
         ]);
+
         $image = Image::findOrFail($id);
         $image->title = $request->title;
         $image->save();
 
         return redirect()
             ->route('owner.images.index')
-            ->with([
-                'message' => '画像情報を更新しました。',
-                'status' => 'info'
-            ]);
+            ->with(['message' => '画像情報を更新しました。',
+            'status' => 'info']);
     }
+
 
     public function destroy($id)
     {
@@ -122,10 +113,10 @@ class ImageController extends Controller
         Image::findOrFail($id)->delete();
 
         return redirect()
-        ->route('owner.images.index')
-        ->with([
-            'message' => '画像を削除しました。',
-            'status' => 'alert'
-        ]);
+            ->route('owner.images.index')
+            ->with([
+                'message' => '画像を削除しました。',
+                'status' => 'alert'
+            ]);
     }
 }
