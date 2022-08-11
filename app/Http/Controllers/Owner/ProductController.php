@@ -23,7 +23,7 @@ class ProductController extends Controller
     $this->middleware(function ($request, $next) {
 
       $id = $request->route()->parameter('product');
-      if(!is_null($id)){
+      if (!is_null($id)) {
         $productsOwnerId = Product::findOrFail($id)->shop->owner->id;
         $productId = (int)$productsOwnerId;
         if ($productId !== Auth::id()) {
@@ -46,7 +46,8 @@ class ProductController extends Controller
     //     }
     // }
 
-    return view('owner.products.index',
+    return view(
+      'owner.products.index',
       compact('ownerInfo')
     );
   }
@@ -72,8 +73,8 @@ class ProductController extends Controller
 
     return view(
       'owner.products.create',
-      compact('shops', 'images', 'categories'));
-
+      compact('shops', 'images', 'categories')
+    );
   }
 
   /**
@@ -192,9 +193,11 @@ class ProductController extends Controller
         throw $e;
       }
       return redirect()
-      ->route('owner.products.index')
-      ->with(['message' => '商品情報を更新しました。',
-      'status' => 'info']);
+        ->route('owner.products.index')
+        ->with([
+          'message' => '商品情報を更新しました。',
+          'status' => 'info'
+        ]);
     }
   }
 
@@ -206,6 +209,13 @@ class ProductController extends Controller
    */
   public function destroy($id)
   {
-    //
+    Product::findOrFail($id)->delete();
+
+    return redirect()
+      ->route('owner.products.index')
+      ->with([
+        'message' => '商品を削除しました。',
+        'status' => 'alert'
+      ]);
   }
 }
