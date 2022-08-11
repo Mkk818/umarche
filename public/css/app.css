@@ -774,11 +774,11 @@ select {
 .mt-2 {
   margin-top: 0.5rem;
 }
-.ml-1 {
-  margin-left: 0.25rem;
-}
 .mr-2 {
   margin-right: 0.5rem;
+}
+.ml-1 {
+  margin-left: 0.25rem;
 }
 .ml-2 {
   margin-left: 0.5rem;
@@ -978,6 +978,9 @@ select {
 }
 .justify-around {
   justify-content: space-around;
+}
+.justify-evenly {
+  justify-content: space-evenly;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;

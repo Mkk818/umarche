@@ -21,14 +21,13 @@
               <a href="{{ route('owner.products.edit', ['product' => $product->id ])}}">
                 <div class="border rounded-md p-2 md:p-4">
                   <x-thumbnail filename="{{ $product->imageFirst->filename ?? '' }}" type="products" />
-                  {{-- <div class="text-gray-700 text-center mt-2">{{ $product->name }}</div> --}}
+                  <div class="text-gray-700 text-center mt-2">{{ $product->name }}</div>
                 </div>
               </a>
             </div>
             @endforeach
             @endforeach
           </div>
-          {{-- {{ $images->links() }} --}}
         </div>
       </div>
     </div>
