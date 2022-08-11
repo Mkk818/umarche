@@ -817,6 +817,9 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
+.mt-32 {
+  margin-top: 8rem;
+}
 .block {
   display: block;
 }
@@ -955,6 +958,9 @@ select {
 }
 .cursor-default {
   cursor: default;
+}
+.scroll-mt-4 {
+  scroll-margin-top: 1rem;
 }
 .list-inside {
   list-style-position: inside;

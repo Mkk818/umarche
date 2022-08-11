@@ -124,20 +124,21 @@
                   </div>
                 </div>
               </div>
-
-              <div class="p-2 w-full mt-4 flex justify-around">
+              <div class="p-2 w-full flex justify-around mt-4">
                 <button type="button" onclick="location.href='{{ route('owner.products.index')}}'"
                   class="bg-gray-200 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
                 <button type="submit"
                   class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">更新</button>
               </div>
           </form>
-            <form id="delete_{{ $product->id }}" method="post"
-              action="{{ route('owner.products.destroy', ['product' => $product->id]) }}"
-              class="text-white text-center bg-red-400 border-0 py-2 px-8 focus:outline-none hover:bg-red-500 rounded text-lg w-48 my-0 mx-auto">
-              @csrf
-              @method('delete')
-              <a href="#" data-id="{{ $product->id }}" onclick="deletePost(this)">削除</a>
+          <form id="delete_{{$product->id}}" method="post"
+            action="{{ route('owner.products.destroy', ['product' => $product->id ] )}}">
+            @csrf
+            @method('delete')
+            <div class="p-2 w-full flex justify-around">
+              <a href="#" data-id="{{ $product->id }}" onclick="deletePost(this)"
+                class="text-white bg-red-400 border-0 py-2 px-4 focus:outline-none hover:bg-red-500 rounded ">削除</a>
+            </div>
         </div>
         </form>
       </div>
