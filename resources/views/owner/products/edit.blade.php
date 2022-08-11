@@ -116,7 +116,8 @@
               <div class="p-2 w-1/2 mx-auto">
                 <div class="relative flex justify-around">
                   <div>
-                    <input type="radio" name="is_selling" value="{{ \Constant::PRODUCT_LIST['add'] }}" class="mr-2" checked>販売中
+                    <input type="radio" name="is_selling" value="{{ \Constant::PRODUCT_LIST['add'] }}" class="mr-2"
+                      checked>販売中
                   </div>
                   <div>
                     <input type="radio" name="is_selling" value="{{ \Constant::PRODUCT_LIST['add'] }}" class="mr-2">停止中
@@ -131,9 +132,17 @@
                   class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">更新</button>
               </div>
           </form>
+            <form id="delete_{{ $product->id }}" method="post"
+              action="{{ route('owner.products.destroy', ['product' => $product->id]) }}"
+              class="text-white text-center bg-red-400 border-0 py-2 px-8 focus:outline-none hover:bg-red-500 rounded text-lg w-48 my-0 mx-auto">
+              @csrf
+              @method('delete')
+              <a href="#" data-id="{{ $product->id }}" onclick="deletePost(this)">削除</a>
         </div>
+        </form>
       </div>
     </div>
+  </div>
   </div>
   <script>
     'use strict'
@@ -151,5 +160,12 @@
       MicroModal.close(modal);
     },)
 })
+
+    function deletePost(e) {
+        'use strict';
+        if (confirm('本当に削除してもいいですか?')) {
+          document.getElementById('delete_' + e.dataset.id).submit();
+        }
+      }
   </script>
 </x-app-layout>
