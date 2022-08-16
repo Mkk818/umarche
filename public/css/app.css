@@ -759,10 +759,6 @@ select {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.my-0 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -816,9 +812,6 @@ select {
 }
 .mt-6 {
   margin-top: 1.5rem;
-}
-.mt-32 {
-  margin-top: 8rem;
 }
 .block {
   display: block;
@@ -910,9 +903,6 @@ select {
 .w-1 {
   width: 0.25rem;
 }
-.w-80 {
-  width: 20rem;
-}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -958,9 +948,6 @@ select {
 }
 .cursor-default {
   cursor: default;
-}
-.scroll-mt-4 {
-  scroll-margin-top: 1rem;
 }
 .list-inside {
   list-style-position: inside;
