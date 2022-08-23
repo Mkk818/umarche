@@ -11,6 +11,9 @@ public/imagesフォルダ内に
 `php artisan storage:link`でstorageフォルダにリンク後、<br>
 storage/app/public/productsフォルダ内に保存すると表示されます。<br>
 (productsフォルダがない場合は作成)
+
+ショップの画像も表示する場合は
+storage/app/public/shopsフォルダを作成し、画像を保存。<br>
 ## ファイルを開いたらやること
 ### ターミナルを3つ立ち上げる
 ①TailwindCSS用
