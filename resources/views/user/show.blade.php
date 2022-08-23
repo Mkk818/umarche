@@ -65,14 +65,13 @@
                     }}</span><span class="text-sm text-gray-700">円(税込)</span>
                 </div>
                 <div class="flex items-center">
-                  <span class="mr-3">Size</span>
+                  <span class="mr-3">数量</span>
                   <div class="relative">
-                    <select
+                    <select name="quantity"
                       class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                      <option>SM</option>
-                      <option>M</option>
-                      <option>L</option>
-                      <option>XL</option>
+                      @for ($i = 0; $i < $quantity; $i++)
+                      <option value="{{$i}}">{{$i}}</option>
+                      @endfor
                     </select>
                   </div>
                 </div>
@@ -88,7 +87,8 @@
             @if($product->shop->filename == null)
             <img class="my-0 mx-auto h-40 w-40 rounded-full object-cover" src="{{ asset('images/no_image.jpg')}}">
             @else
-            <img class="my-0 mx-auto h-40 w-40 rounded-full object-cover" src="{{ asset('storage/shops/' . $product->shop->filename)}}">
+            <img class="my-0 mx-auto h-40 w-40 rounded-full object-cover"
+              src="{{ asset('storage/shops/' . $product->shop->filename)}}">
             @endif
           </div>
           {{-- <div class="mb-4 text-center">{{ $product->shop->filename }}</div> --}}
@@ -114,7 +114,8 @@
             </p>
           </main>
           <footer class="modal__footer">
-            <button type="button" class="modal__btn" data-micromodal-close aria-label="Close this dialog window">閉じる</button>
+            <button type="button" class="modal__btn" data-micromodal-close
+              aria-label="Close this dialog window">閉じる</button>
           </footer>
         </div>
       </div>
