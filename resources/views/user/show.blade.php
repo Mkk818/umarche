@@ -37,8 +37,8 @@
                     @endif
                   </div>
                   <div class="swiper-slide">
-                    @if ($product->imageForth->filename !== null)
-                    <img src="{{ asset('storage/products/' . $product->imageForth->filename ) }}" alt="">
+                    @if ($product->imageFourth->filename !== null)
+                    <img src="{{ asset('storage/products/' . $product->imageFourth->filename ) }}" alt="">
                     @else
                     <img src="">
                     @endif
