@@ -49,11 +49,41 @@ class CartController extends Controller
         return redirect()->route('user.cart.index');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Cart::where('product_id', $id)
-        ->where('user_id', Auth::id())
-        ->delete();
+            ->where('user_id', Auth::id())
+            ->delete();
 
         return redirect()->route('user.cart.index');
+    }
+    public function checkout()
+    {
+        $user = User::findOrFail(Auth::id());
+        $products = $user->products;
+
+        $line_items = [];
+        foreach ($products as $product){
+            $line_item = [
+                'name' => $product->description,
+                'description' => $product->price,
+                'amount' =>$product->price,
+                'currency' =>'jpy',
+                'quantity' =>$product->pivot->quantity,
+            ];
+            array_push($line_items, $line_item);
+        }
+        // dd($line_items);
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+        $_SESSION= \Stripe\Checkout\Session::create([
+            'line_items' => [$line_items],
+            'mode' => 'payment',
+            'success_url' => route('user.items.index'),
+            'cancel_url' => route('user.cart.index'),
+        ]);
+
+        $publicKey= (env('STRIPE_PUBLIC_KEY'));
+
+        return view('user.checkout', compact('session', 'publicKey'));
     }
 }
