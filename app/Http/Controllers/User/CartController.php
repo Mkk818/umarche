@@ -95,7 +95,7 @@ class CartController extends Controller
             'payment_method_types' => ['card'],
             'line_items' => [$line_items],
             'mode' => 'payment',
-            'success_url' => route('user.cart.success'),
+            'success_url' => route('user.cart.success '),
             'cancel_url' => route('user.cart.index'),
         ]);
 
