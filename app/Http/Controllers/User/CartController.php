@@ -5,8 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
-use App\Models\Stock;
 use App\Models\User;
+use App\Models\Stock;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -72,8 +72,8 @@ class CartController extends Controller
                 return redirect()->route('user.cart.index');
             } else {
                 $line_item = [
-                    'name' => $product->description,
-                    'description' => $product->price,
+                    'name' => $product->name,
+                    'description' => $product->information,
                     'amount' => $product->price,
                     'currency' => 'jpy',
                     'quantity' => $product->pivot->quantity,
@@ -89,17 +89,24 @@ class CartController extends Controller
                 'type' => \Constant::PRODUCT_LIST['reduce']
             ]);
         }
-        dd('test');
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
-        $_SESSION = \Stripe\Checkout\Session::create([
+
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
             'line_items' => [$line_items],
             'mode' => 'payment',
-            'success_url' => route('user.items.index'),
+            'success_url' => route('user.cart.success'),
             'cancel_url' => route('user.cart.index'),
         ]);
 
-        $publicKey = (env('STRIPE_PUBLIC_KEY'));
+        $publicKey = env('STRIPE_PUBLIC_KEY');
 
         return view('user.checkout', compact('session', 'publicKey'));
+    }
+
+    public function success(){
+        Cart::where('user_id', Auth::id())->delete();
+
+        return redirect()->route('user.items.index');
     }
 }
