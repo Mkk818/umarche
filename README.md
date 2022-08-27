@@ -1,60 +1,115 @@
-### 元のGitHub
-https://github.com/aokitashipro/laravel_umarche
+### 元の GitHub
+
+https://github.com/Mkk818/umarche
+
+ダウンロード方法
+git clone
+
+git clone https://github.com/Mkk818/umarche.git
+
+git clone ブランチを指定してダウンロードする場合
+
+git clone -b ブランチ名 https://github.com/Mkk818/umarche.git
+
+もしくは zip ファイルでダウンロード
+
+インストール方法
+cd laravel_umarche
+composer install
+npm install
+npm run dev
+.env.example をコピーして .env ファイルを作成
+
+.env ファイルの中の下記をご利用の環境に合わせて変更してください。
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_umarche
+DB_USERNAME=umarche
+DB_PASSWORD=password123
+XAMPP/MAMP または他の開発環境で DB を起動した後に
+
+php artisan migrate:fresh --seed
+
+と実行してください。(データベーステーブルとダミーデータが追加されれば OK)
+
+最後に php artisan key:generate と入力してキーを生成後、
+
+php artisan serve で簡易サーバーを立ち上げ、表示確認してください。
 
 ## インストール後の実施事項
 
 画像のダミーデータは
-public/imagesフォルダ内に
+public/images フォルダ内に
 **sample1.jpg ~ sample2.jpg**として
 保存しています。
 
-`php artisan storage:link`でstorageフォルダにリンク後、<br>
-storage/app/public/productsフォルダ内に保存すると表示されます。<br>
-(productsフォルダがない場合は作成)
+`php artisan storage:link`で storage フォルダにリンク後、<br>
+storage/app/public/products フォルダ内に保存すると表示されます。<br>
+(products フォルダがない場合は作成)
 
 ショップの画像も表示する場合は
-storage/app/public/shopsフォルダを作成し、画像を保存。<br>
+storage/app/public/shops フォルダを作成し、画像を保存。<br>
+
 ## ファイルを開いたらやること
-### ターミナルを3つ立ち上げる
-①TailwindCSS用
+
+### ターミナルを 3 つ立ち上げる
+
+①TailwindCSS 用
+
 ```
 npm run watch
 ```
-②Laravel用
+
+②Laravel 用
+
 ```
 php artisan serve
 ```
-③Laravel各コマンド実行(コントローラー作成とか)
-### Gitのコマンド
+
+③Laravel 各コマンド実行(コントローラー作成とか)
+
+### Git のコマンド
+
 ステージング
+
 ```
 git add -A .
 ```
+
 コミット(コメント付き)
+
 ```
 % git commit -m "コメント"
 ```
+
 プッシュ
+
 ```
 % git push origin ブランチ名
 ```
 
 ブランチ確認
+
 ```
 % git branch
 ```
 
 ブランチ切り替え
+
 ```
 git switch ブランチ名
 ```
 
 フェッチ
+
 ```
 git
 ```
 
 プル
+
 ```
 git pull
 ```
@@ -72,13 +127,13 @@ git pull
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -94,19 +149,19 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Cubet Techno Labs](https://cubettech.com)**
+-   **[Cyber-Duck](https://cyber-duck.co.uk)**
+-   **[Many](https://www.many.co.uk)**
+-   **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+-   **[DevSquad](https://devsquad.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[OP.GG](https://op.gg)**
+-   **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+-   **[Lendio](https://lendio.com)**
 
 ## Contributing
 
