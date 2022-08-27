@@ -36,13 +36,20 @@
                       d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </button>
+              </form>
             </div>
-            </form>
           </div>
           @endforeach
-          {{-- 合計金額：{{ $totalPrice }} --}}
+          <div class="my-2">
+            小計: {{ number_format($totalPrice)}}<span class="text-sm
+            text-gray-700">円(税込)</span> </div>
+          <div>
+            <button onclick="location.href='{{ route('user.cart.checkout')}}'"
+              class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">購入する
+            </button>
+          </div>
           @else
-          カートの商品が入っていません。
+          カートに商品が入っていません。
           @endif
         </div>
       </div>
