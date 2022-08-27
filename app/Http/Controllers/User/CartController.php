@@ -31,8 +31,6 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        // $itemInCart = Cart::where('user_id', Auth::id())
-        // ->where('product_id', $request->product_id)->first();
         $itemInCart = Cart::where('product_id', Auth::id())
             ->where('user_id', Auth::id())->first();
 
@@ -85,8 +83,8 @@ class CartController extends Controller
         foreach ($products as $product) {
             Stock::create([
                 'product_id' => $product->id,
-                'quantity' => $product->pivot->quantity * -1,
-                'type' => \Constant::PRODUCT_LIST['reduce']
+                'type' => \Constant::PRODUCT_LIST['reduce'],
+                'quantity' => $product->pivot->quantity * -1
             ]);
         }
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
@@ -95,18 +93,37 @@ class CartController extends Controller
             'payment_method_types' => ['card'],
             'line_items' => [$line_items],
             'mode' => 'payment',
-            'success_url' => route('user.cart.success '),
-            'cancel_url' => route('user.cart.index'),
+            'success_url' => route('user.cart.success'),
+            'cancel_url' => route('user.cart.cancel'),
         ]);
 
         $publicKey = env('STRIPE_PUBLIC_KEY');
 
-        return view('user.checkout', compact('session', 'publicKey'));
+        return view(
+            'user.checkout',
+            compact('session', 'publicKey')
+        );
     }
 
-    public function success(){
+    public function success()
+    {
         Cart::where('user_id', Auth::id())->delete();
 
         return redirect()->route('user.items.index');
+    }
+
+    public function cancel()
+    {
+        $user = User::findOrFail(Auth::id());
+
+        foreach ($user->products as $product) {
+            Stock::create([
+                'product_id' => $product->id,
+                'type' => \Constant::PRODUCT_LIST['add'],
+                'quantity' => $product->pivot->quantity
+            ]);
+        }
+
+        return redirect()->route('user.cart.index');
     }
 }
