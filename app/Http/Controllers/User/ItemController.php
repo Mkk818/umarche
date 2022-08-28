@@ -14,18 +14,20 @@ class ItemController extends Controller
   {
     $this->middleware('auth:users');
 
-    // $this->middleware(function ($request, $next) {
 
-    //   $id = $request->route()->parameter('product');
-    //   if (!is_null($id)) {
-    //     $productsOwnerId = Product::findOrFail($id)->shop->owner->id;
-    //     $productId = (int)$productsOwnerId;
-    //     if ($productId !== Auth::id()) {
-    //       abort(404);
-    //     }
-    //   }
-    //   return $next($request);
-    // });
+
+    $this->middleware(function ($request, $next) {
+
+      $id = $request->route()->parameter('item');
+      if (!is_null($id)) {
+        $itemId = Product::availableItems()
+         ->where('products.id', $id)->exists();
+        if (!$itemId) {
+          abort(404);
+        }
+      }
+      return $next($request);
+    });
   }
 
   public function index()
