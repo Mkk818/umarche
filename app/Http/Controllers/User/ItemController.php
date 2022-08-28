@@ -30,10 +30,12 @@ class ItemController extends Controller
     });
   }
 
-  public function index()
+  public function index(Request $request)
   {
     // ローカルスコープを使用(Productモデル)
-    $products  = Product::availableItems()->get();
+    $products  = Product::availableItems()
+    ->sortOrder($request->sort)
+    ->get();
 
     return view('user.index', compact('products'));
   }
