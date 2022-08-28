@@ -1,6 +1,8 @@
 ### 元の GitHub
 
-https://github.com/Mkk818/umarche
+https://github.com/aokitashipro/laravel_umarche
+
+https://github.com/aokitashipro/laravel_umarche/branches/all
 
 ダウンロード方法
 git clone
