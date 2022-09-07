@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Stock;
+use App\Models\PrimaryCategory;
 use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
@@ -32,12 +33,20 @@ class ItemController extends Controller
 
   public function index(Request $request)
   {
+    $categories = PrimaryCategory::with('secondary')
+    ->get();
+
+    // dd($request);
     // ローカルスコープを使用(Productモデル)
     $products  = Product::availableItems()
+    ->selectCategory($request->category ?? '0')
+    ->searchKeyword($request->keyword)
     ->sortOrder($request->sort)
     ->paginate($request->pagination ?? '20');
 
-    return view('user.index', compact('products'));
+
+
+    return view('user.index', compact('products', 'categories'));
   }
 
   public function show($id)
