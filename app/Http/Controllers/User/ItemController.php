@@ -40,6 +40,7 @@ class ItemController extends Controller
     // ローカルスコープを使用(Productモデル)
     $products  = Product::availableItems()
     ->selectCategory($request->category ?? '0')
+    ->searchKeyword($request->keyword)
     ->sortOrder($request->sort)
     ->paginate($request->pagination ?? '20');
 

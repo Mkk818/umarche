@@ -2062,6 +2062,14 @@ select {
     width: 50%;
   }
 
+  .lg\:w-1\/4 {
+    width: 25%;
+  }
+
+  .lg\:justify-around {
+    justify-content: space-around;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;

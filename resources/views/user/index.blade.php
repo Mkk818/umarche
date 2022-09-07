@@ -4,7 +4,7 @@
         商品一覧
       </h2>
         <form method="get" action="{{ route('user.items.index') }}">
-          <div class="lg:flex justify-around">
+          <div class="lg:flex lg:justify-around">
             <div class="lg:flex items-center">
               <select name="category" class="mb-2 lg:mb-0 lg:mr-2">
                 <option value="0" @if (\Request::get('category') === '0') selected @endif>全て</option>
@@ -63,7 +63,7 @@
         <div class="p-6 bg-white border-b border-gray-200">
           <div class="flex flex-wrap">
             @foreach ($products as $product)
-            <div class="w-1/4 p-2 md:p-4">
+            <div class="w-full lg:w-1/4 p-2 md:p-4">
               <a href="{{ route('user.items.show', ['item'=> $product->id]) }}">
                 <div class="border rounded-md p-2 md:p-4">
                   <x-thumbnail filename="{{ $product->filename ?? '' }}" type="products" />
@@ -71,7 +71,7 @@
                     <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category }}
                     </h3>
                     <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
-                    <p class="mt-1">{{ number_format($product->price) }}<span class="text-gray-700">円(税込)</span></p>
+                    <p class="mt-1">{{ number_format($product->price) }}<span class="text-sm text-gray-700">円(税込)</span></p>
                   </div>
                 </div>
               </a>

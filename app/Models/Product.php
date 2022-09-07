@@ -11,6 +11,8 @@ use App\Models\Stock;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isNull;
+
 class Product extends Model
 {
     use HasFactory;
@@ -119,6 +121,24 @@ class Product extends Model
     {
         if ($categoryId !== '0') {
             return $query->where('secondary_category_id', $categoryId);
+        } else {
+            return;
+        }
+    }
+    public function scopeSearchKeyword($query, $keyword)
+    {
+        if (!is_Null($keyword)) {
+            // 全角スペースを半角に
+            $spaceConvert = mb_convert_kana($keyword, 's');
+            //空白で区切る
+            $keywords = preg_split('/[\s]+/', $spaceConvert, -1, PREG_SPLIT_NO_EMPTY);
+            //単語をループで回す
+            foreach ($keywords as $word) {
+                $query->where('products.name', 'like', '%' . $word . '%');
+            }
+            return $query;
+        } else {
+            return;
         }
     }
 }
