@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Stock;
 use App\Models\PrimaryCategory;
 use App\Mail\TestMail;
+use App\Jobs\SendThanksMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -36,8 +37,12 @@ class ItemController extends Controller
     $categories = PrimaryCategory::with('secondary')
     ->get();
 
-    Mail::to('test@example.com') // 受信者の設定
-    ->send(new TestMail()); // Mailableクラス
+    // 同期的に送信
+    // Mail::to('test@example.com') // 受信者の設定
+    // ->send(new TestMail()); // Mailableクラス
+
+    // 非同期的に送信
+    SendThanksMail::dispatch();
 
     // dd($request);
     // ローカルスコープを使用(Productモデル)
