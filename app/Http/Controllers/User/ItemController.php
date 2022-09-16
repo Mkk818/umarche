@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Stock;
 use App\Models\PrimaryCategory;
+use App\Mail\TestMail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ItemController extends Controller
 {
   public function __construct()
   {
     $this->middleware('auth:users');
-
-
 
     $this->middleware(function ($request, $next) {
 
@@ -36,6 +36,9 @@ class ItemController extends Controller
     $categories = PrimaryCategory::with('secondary')
     ->get();
 
+    Mail::to('test@example.com') // 受信者の設定
+    ->send(new TestMail()); // Mailableクラス
+
     // dd($request);
     // ローカルスコープを使用(Productモデル)
     $products  = Product::availableItems()
@@ -43,8 +46,6 @@ class ItemController extends Controller
     ->searchKeyword($request->keyword)
     ->sortOrder($request->sort)
     ->paginate($request->pagination ?? '20');
-
-
 
     return view('user.index', compact('products', 'categories'));
   }
