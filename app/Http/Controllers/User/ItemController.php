@@ -42,7 +42,7 @@ class ItemController extends Controller
     // ->send(new TestMail()); // Mailableクラス
 
     // 非同期的に送信
-    SendThanksMail::dispatch();
+    // SendThanksMail::dispatch();
 
     // dd($request);
     // ローカルスコープを使用(Productモデル)
