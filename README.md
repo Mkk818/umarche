@@ -54,6 +54,15 @@ storage/app/public/products フォルダ内に保存すると表示されます�
 ショップの画像も表示する場合は
 storage/app/public/shops フォルダを作成し、画像を保存。<br>
 
+##section7の補足
+決済のテストとしてStripeを使用。
+必要であれば.envにStripeの情報を追記する。
+
+##section8の補足
+決済のテストとしてmailtrapを使用。
+必要であれば.envにmailtrapの情報を追記する。
+
+(上記は講座内で解説)
 ## ファイルを開いたらやること
 
 ### ターミナルを 3 つ立ち上げる
