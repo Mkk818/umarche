@@ -62,6 +62,9 @@ storage/app/public/shops フォルダを作成し、画像を保存。<br>
 決済のテストとしてmailtrapを使用。
 必要であれば.envにmailtrapの情報を追記する。
 
+メール処理に時間がかかるのでキューを使用。
+`php artisan queue:work`
+
 (上記は講座内で解説)
 ## ファイルを開いたらやること
 
